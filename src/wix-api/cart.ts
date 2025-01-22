@@ -6,9 +6,9 @@ import { products } from "@wix/stores";
 export async function getCart(wixClient: WixClient) {
   try {
     return await wixClient.currentCart.getCurrentCart();
-  } catch (error: any) {
+  } catch (error) {
     if (
-      (error).details.applicationError.code === "OWNED_CART_NOT_FOUND"
+      (error as any).details.applicationError.code === "OWNED_CART_NOT_FOUND"
     ) {
       return null;
     } else {
@@ -77,9 +77,9 @@ export async function removeCartItem(
 export async function clearCart(wixClient: WixClient) {
   try {
     return await wixClient.currentCart.deleteCurrentCart();
-  } catch (error: any) {
+  } catch (error) {
     if (
-      (error).details.applicationError.code === "OWNED_CART_NOT_FOUND"
+      (error as any).details.applicationError.code === "OWNED_CART_NOT_FOUND"
     ) {
       return;
     } else {

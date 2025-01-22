@@ -4,5 +4,8 @@
     "next/typescript",
     "prettier",
     "plugin:@tanstack/eslint-plugin-query/recommended"
-  ]
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }

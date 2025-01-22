@@ -6,8 +6,8 @@ export async function getOrder(
 ) {
   try {
     return await wixClient.orders.getOrder(orderId);
-  } catch (error: any) {
-    if ((error).details.applicationError.code === "NOT_FOUND") {
+  } catch (error) {
+    if ((error as any).details.applicationError.code === "NOT_FOUND") {
       return null;
     } else {
       throw error;

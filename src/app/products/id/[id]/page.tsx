@@ -9,7 +9,6 @@ interface PageProps {
   params: {
     id: string
   };
-  // @ts-expect-error: Temporarily ignore "Unexpected any" error.
   searchParams: any;
 }
 
