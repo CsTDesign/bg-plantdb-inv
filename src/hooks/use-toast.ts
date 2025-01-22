@@ -18,7 +18,7 @@ type ToasterToast = ToastProps & {
   action?: ToastActionElement
 }
 
-// @ts-ignore: actionTypes is used for type inference, not a value.
+// @ts-expect-error: actionTypes is used for type inference, not a value.
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
   UPDATE_TOAST: "UPDATE_TOAST",
