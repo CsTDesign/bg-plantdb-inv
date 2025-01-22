@@ -7,6 +7,7 @@ export async function getOrder(
   try {
     return await wixClient.orders.getOrder(orderId);
   } catch (error) {
+    // @ts-ignore: Temporarily ignore "Unexpected any" error.
     if ((error as any).details.applicationError.code === "NOT_FOUND") {
       return null;
     } else {

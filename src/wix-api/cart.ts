@@ -8,6 +8,7 @@ export async function getCart(wixClient: WixClient) {
     return await wixClient.currentCart.getCurrentCart();
   } catch (error) {
     if (
+      // @ts-ignore: Temporarily ignore "Unexpected any" error.
       (error as any).details.applicationError.code === "OWNED_CART_NOT_FOUND"
     ) {
       return null;
@@ -79,6 +80,7 @@ export async function clearCart(wixClient: WixClient) {
     return await wixClient.currentCart.deleteCurrentCart();
   } catch (error) {
     if (
+      // @ts-ignore: Temporarily ignore "Unexpected any" error.
       (error as any).details.applicationError.code === "OWNED_CART_NOT_FOUND"
     ) {
       return;

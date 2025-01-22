@@ -14,6 +14,7 @@ export function useCreateBackInStockNotificationRequest() {
       createBackInStockNotificationRequest(wixBrowserClient, values),
     onError(error) {
       console.error(error);
+      // @ts-ignore: Temporarily ignore "Unexpected any" error.
       if ((error as any).details.applicationError.code === "BACK_IN_STOCK_NOTIFICATION_REQUEST_ALREADY_EXISTS") {
         toast({
           variant: "destructive",
