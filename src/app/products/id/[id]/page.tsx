@@ -5,20 +5,6 @@ import {
   redirect
 } from "next/navigation";
 
-function sanitizeSearchParams(params: any): Record<string, string> {
-  const sanitized: Record<string, string> = {};
-
-  for (const key in params) {
-    const value = params[key];
-    if (typeof value === 'symbol') {
-      continue; 
-    }
-    sanitized[key] = String(value);
-  }
-
-  return sanitized;
-}
-
 interface PageProps {
   params: {
     id: string
@@ -29,18 +15,14 @@ interface PageProps {
 export default async function Page({
   params,
   searchParams
-}: PageProps) {
-  const sanitizedSearchParams = sanitizeSearchParams(searchParams);
-  
+}: PageProps) { 
   if (params.id === "someId") {
-    const queryParams = new URLSearchParams(sanitizedSearchParams).toString();
-    redirect(`/products/mum?${queryParams}`);
+    redirect(`/products/mum?${new URLSearchParams(searchParams)}`);
   }
 
   const product = await getProductById(getWixServerClient(), params.id);
 
   if (!product) notFound();
 
-  const queryParams = new URLSearchParams(sanitizedSearchParams).toString();
-  redirect(`/products/${product.slug}?${queryParams}`);
+  redirect(`/products/${product.slug}?${new URLSearchParams(searchParams)}`);
 }

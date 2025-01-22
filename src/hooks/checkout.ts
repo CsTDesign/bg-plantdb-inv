@@ -47,7 +47,7 @@ export function useQuickBuy() {
     setPending(true);
 
     try {
-      const checkoutUrl = await getCheckoutUrlForProduct(wixBrowserClient);
+      const checkoutUrl = await getCheckoutUrlForProduct(wixBrowserClient, values);
       window.location.href = checkoutUrl;
     } catch (error) {
       setPending(false);

@@ -18,8 +18,7 @@ interface PageProps {
 }
 
 export async function generateMetadata({
-  params: { slug },
-  searchParams: { page }
+  params: { slug }
 }: PageProps): Promise<Metadata> {
   const collection = await getCollectionBySlug(
     getWixServerClient(), slug
