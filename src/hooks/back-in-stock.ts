@@ -12,10 +12,9 @@ export function useCreateBackInStockNotificationRequest() {
   return useMutation({
     mutationFn: (values: BackInStockNotificationRequestValues) =>
       createBackInStockNotificationRequest(wixBrowserClient, values),
-    onError(error) {
+    onError(error: any) {
       console.error(error);
-      // @ts-expect-error: Temporarily ignore "Unexpected any" error.
-      if ((error as any).details.applicationError.code === "BACK_IN_STOCK_NOTIFICATION_REQUEST_ALREADY_EXISTS") {
+      if ((error).details.applicationError.code === "BACK_IN_STOCK_NOTIFICATION_REQUEST_ALREADY_EXISTS") {
         toast({
           variant: "destructive",
           description: "You are already subscribed to this product."
