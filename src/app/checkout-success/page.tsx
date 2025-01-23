@@ -11,19 +11,17 @@ export const metadata: Metadata = {
   title: "Checkout success"
 };
 
-// interface PageProps {
-//   searchParams: {
-//     orderId: string
-//   };
-// }
-
-export default async function Page({
-  searchParams: { orderId }
-}: {
+interface PageProps {
   searchParams: {
     orderId: string
-  }
-}) {
+  };
+}
+
+export default async function Page({
+  searchParams
+}: PageProps) {
+  const { orderId } = searchParams;
+  
   if (!orderId) {
     notFound();
   }
