@@ -11,15 +11,23 @@ export const metadata: Metadata = {
   title: "Checkout success"
 };
 
-interface PageProps {
-  searchParams: {
-    orderId: string
-  };
-}
+// interface PageProps {
+//   searchParams: {
+//     orderId: string
+//   };
+// }
 
 export default async function Page({
   searchParams: { orderId }
-}: PageProps) {
+}: {
+  searchParams: {
+    orderId: string
+  }
+}) {
+  if (!orderId) {
+    notFound();
+  }
+
   const wixClient = getWixServerClient();
   const [
     order,
