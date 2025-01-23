@@ -17,9 +17,7 @@ interface PageProps {
   };
 }
 
-export default async function Page({
-  searchParams
-}: PageProps) {
+export default async function Page({ searchParams }: PageProps) {
   const { orderId } = searchParams;
   
   if (!orderId) {
