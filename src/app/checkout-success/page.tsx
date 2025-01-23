@@ -17,13 +17,9 @@ interface PageProps {
   };
 }
 
-export default async function Page({ searchParams }: PageProps) {
-  const { orderId } = searchParams;
-  
-  if (!orderId) {
-    notFound();
-  }
-
+export default async function Page({
+  searchParams: { orderId }
+}: PageProps) {
   const wixClient = getWixServerClient();
   const [
     order,
